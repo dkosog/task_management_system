@@ -194,5 +194,11 @@ namespace TaskManager
         new List<string>() { "Имя1", "Имя2" }
         ));
     }
+
+    private void CreateReportToolStripButton_Click(object sender, EventArgs e)
+    {
+      Reports reports = new Reports(tasksListView);
+      reports.ReportCreate();
+    }
   }
 }
