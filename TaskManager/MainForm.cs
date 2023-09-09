@@ -10,12 +10,20 @@ namespace TaskManager
   /// </summary>
   public partial class MainForm : Form
   {
-    private ListViewItem CreateTaskItem(string title, string description, 
-      DateTime startDate, DateTime endDate, int priority, List<string> responsible)
+    /// <summary>
+    /// Создание элемента задачи для ListView.
+    /// </summary>
+    /// <param name="title">Заголовок.</param>
+    /// <param name="description">Описание.</param>
+    /// <param name="deadlines">Дней на исполнение.</param>
+    /// <param name="priority">Приоритет.</param>
+    /// <param name="responsible">Ответственные.</param>
+    /// <returns>Элемент задачи ListViewItem.</returns>
+    private ListViewItem CreateTaskItem(string title, string description, int deadlines, int priority, List<string> responsible)
     {
       var taskItem = new ListViewItem(title, tasksListView.Groups[0]);
       taskItem.ToolTipText = description;
-      taskItem.SubItems.Add(Math.Round((endDate - startDate).TotalDays).ToString());
+      taskItem.SubItems.Add(deadlines.ToString());
       taskItem.SubItems.Add(priority.ToString());
       taskItem.SubItems.Add(string.Join(", ", responsible));
 
@@ -41,6 +49,15 @@ namespace TaskManager
       }
 
       return taskItem;
+    }
+
+    private void CreateMockTaskItems()
+    {
+      for (int i = 0; i < 10; i++)
+      {
+        var item = CreateTaskItem($"Задача {i + 1}", $"Описание {i + 1}", i, 1, new List<string>());
+        tasksListView.Items.Add(item);
+      }
     }
 
     private void tasksListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,96 +120,7 @@ namespace TaskManager
     public MainForm()
     {
       InitializeComponent();
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2" }
-        ));
+      CreateMockTaskItems();
     }
   }
 }
