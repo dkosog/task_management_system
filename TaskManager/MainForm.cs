@@ -5,23 +5,11 @@ using System.Windows.Forms;
 
 namespace TaskManager
 {
+  /// <summary>
+  /// Форма основного приложения.
+  /// </summary>
   public partial class MainForm : Form
   {
-    public MainForm()
-    {
-      InitializeComponent();
-
-      tasksListView.Items.Add(
-        CreateTaskItem(
-        "Задача 1",
-        "Описание",
-        DateTime.Now,
-        DateTime.Now,
-        1,
-        new List<string>() { "Имя1", "Имя2"}
-        ));    
-    }
-
     private ListViewItem CreateTaskItem(string title, string description, 
       DateTime startDate, DateTime endDate, int priority, List<string> responsible)
     {
@@ -31,6 +19,7 @@ namespace TaskManager
       taskItem.SubItems.Add(priority.ToString());
       taskItem.SubItems.Add(string.Join(", ", responsible));
 
+      // Цвет текста у приоритета.
       taskItem.UseItemStyleForSubItems = false;
       switch (priority)
       {
@@ -54,7 +43,29 @@ namespace TaskManager
       return taskItem;
     }
 
-    private void upStatusButton_Click(object sender, EventArgs e)
+    private void tasksListView_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      if (tasksListView.SelectedItems.Count > 0)
+      {
+        upStatusToolStripButton.Enabled = true;
+        downStatusToolStripButton.Enabled = true;
+        deleteTaskToolStripButton.Enabled = true;
+      }
+      else
+      {
+        upStatusToolStripButton.Enabled = false;
+        downStatusToolStripButton.Enabled = false;
+        deleteTaskToolStripButton.Enabled = false;
+      }
+    }
+
+    private void createTaskToolStripButton_Click(object sender, EventArgs e)
+    {
+      var createTaskForm = new CreateTaskForm();
+      createTaskForm.ShowDialog();
+    }
+
+    private void upStatusToolStripButton_Click(object sender, EventArgs e)
     {
       foreach (ListViewItem item in tasksListView.SelectedItems)
       {
@@ -65,7 +76,7 @@ namespace TaskManager
       }
     }
 
-    private void downStatusButton_Click(object sender, EventArgs e)
+    private void downStatusToolStripButton_Click(object sender, EventArgs e)
     {
       foreach (ListViewItem item in tasksListView.SelectedItems)
       {
@@ -76,42 +87,112 @@ namespace TaskManager
       }
     }
 
-    private void createTaskButton_Click(object sender, EventArgs e)
+    private void deleteTaskToolStripButton_Click(object sender, EventArgs e)
     {
-      var userList = new List<string>();
+      MessageBox.Show(
+        "Вы действительно хотите удалить выделенные задачи?", 
+        "Удаление задач", 
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning
+        );
+    }
 
-      for (int i = 0; i < usersCheckedListBox.Items.Count; i++)
-      {
-        if (usersCheckedListBox.GetItemCheckState(i) == CheckState.Checked)
-        {
-          userList.Add(usersCheckedListBox.Items[i].ToString());
-        }
-      }
-
-      tabMenu.SelectTab(0);
+    /// <summary>
+    /// Конструктор.
+    /// </summary>
+    public MainForm()
+    {
+      InitializeComponent();
 
       tasksListView.Items.Add(
         CreateTaskItem(
-        titleTextBox.Text,
-        descriptionTextBox.Text,
-        startDateTimePicker.Value,
-        endDateTimePicker.Value,
-        (int)priorityNumericUpDown.Value,
-        userList
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
         ));
-    }
 
-    private void sendCommentButton_Click(object sender, EventArgs e)
-    {
-      sendCommentTextBox.Clear();
-    }
+      tasksListView.Items.Add(
+        CreateTaskItem(
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
+        ));
 
-    private void deleteTasksButton_Click(object sender, EventArgs e)
-    {
-      foreach (ListViewItem item in tasksListView.SelectedItems)
-      {
-        tasksListView.Items.Remove(item);
-      }
+      tasksListView.Items.Add(
+        CreateTaskItem(
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
+        ));
+
+      tasksListView.Items.Add(
+        CreateTaskItem(
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
+        ));
+
+      tasksListView.Items.Add(
+        CreateTaskItem(
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
+        ));
+
+      tasksListView.Items.Add(
+        CreateTaskItem(
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
+        ));
+
+      tasksListView.Items.Add(
+        CreateTaskItem(
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
+        ));
+
+      tasksListView.Items.Add(
+        CreateTaskItem(
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
+        ));
+
+      tasksListView.Items.Add(
+        CreateTaskItem(
+        "Задача 1",
+        "Описание",
+        DateTime.Now,
+        DateTime.Now,
+        1,
+        new List<string>() { "Имя1", "Имя2" }
+        ));
     }
   }
 }
