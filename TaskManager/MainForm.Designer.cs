@@ -28,10 +28,10 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Не в работе", System.Windows.Forms.HorizontalAlignment.Left);
-      System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("В работе", System.Windows.Forms.HorizontalAlignment.Left);
-      System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("На проверке", System.Windows.Forms.HorizontalAlignment.Left);
-      System.Windows.Forms.ListViewGroup listViewGroup12 = new System.Windows.Forms.ListViewGroup("Завершена", System.Windows.Forms.HorizontalAlignment.Left);
+      System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Не в работе", System.Windows.Forms.HorizontalAlignment.Left);
+      System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("В работе", System.Windows.Forms.HorizontalAlignment.Left);
+      System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("На проверке", System.Windows.Forms.HorizontalAlignment.Left);
+      System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Завершена", System.Windows.Forms.HorizontalAlignment.Left);
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.tabMenu = new System.Windows.Forms.TabControl();
       this.tasksTabPage = new System.Windows.Forms.TabPage();
@@ -42,12 +42,13 @@
       this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.toolStrip = new System.Windows.Forms.ToolStrip();
       this.createTaskToolStripButton = new System.Windows.Forms.ToolStripButton();
+      this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.upStatusToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.downStatusToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.deleteTaskToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.tabPage1 = new System.Windows.Forms.TabPage();
-      this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+      this.CreateReportToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.tabMenu.SuspendLayout();
       this.tasksTabPage.SuspendLayout();
       this.toolStrip.SuspendLayout();
@@ -90,19 +91,19 @@
             this.columnHeader5});
       this.tasksListView.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tasksListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-      listViewGroup9.Header = "Не в работе";
-      listViewGroup9.Name = "listViewGroup1";
-      listViewGroup10.Header = "В работе";
-      listViewGroup10.Name = "listViewGroup2";
-      listViewGroup11.Header = "На проверке";
-      listViewGroup11.Name = "listViewGroup3";
-      listViewGroup12.Header = "Завершена";
-      listViewGroup12.Name = "listViewGroup4";
+      listViewGroup1.Header = "Не в работе";
+      listViewGroup1.Name = "listViewGroup1";
+      listViewGroup2.Header = "В работе";
+      listViewGroup2.Name = "listViewGroup2";
+      listViewGroup3.Header = "На проверке";
+      listViewGroup3.Name = "listViewGroup3";
+      listViewGroup4.Header = "Завершена";
+      listViewGroup4.Name = "listViewGroup4";
       this.tasksListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup9,
-            listViewGroup10,
-            listViewGroup11,
-            listViewGroup12});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4});
       this.tasksListView.HideSelection = false;
       this.tasksListView.Location = new System.Drawing.Point(3, 29);
       this.tasksListView.Name = "tasksListView";
@@ -143,7 +144,8 @@
             this.toolStripSeparator1,
             this.upStatusToolStripButton,
             this.downStatusToolStripButton,
-            this.deleteTaskToolStripButton});
+            this.deleteTaskToolStripButton,
+            this.CreateReportToolStripButton});
       this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
       this.toolStrip.Location = new System.Drawing.Point(3, 2);
       this.toolStrip.Name = "toolStrip";
@@ -162,6 +164,16 @@
       this.createTaskToolStripButton.Text = "Создать";
       this.createTaskToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
       this.createTaskToolStripButton.Click += new System.EventHandler(this.createTaskToolStripButton_Click);
+      // 
+      // toolStripButton1
+      // 
+      this.toolStripButton1.AutoToolTip = false;
+      this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+      this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.toolStripButton1.Name = "toolStripButton1";
+      this.toolStripButton1.Size = new System.Drawing.Size(52, 24);
+      this.toolStripButton1.Text = "Отчет";
       // 
       // toolStripSeparator1
       // 
@@ -214,15 +226,15 @@
       this.tabPage1.Text = "Пользователи";
       this.tabPage1.UseVisualStyleBackColor = true;
       // 
-      // toolStripButton1
+      // CreateReportToolStripButton
       // 
-      this.toolStripButton1.AutoToolTip = false;
-      this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-      this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-      this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-      this.toolStripButton1.Name = "toolStripButton1";
-      this.toolStripButton1.Size = new System.Drawing.Size(52, 24);
-      this.toolStripButton1.Text = "Отчет";
+      this.CreateReportToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.CreateReportToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("CreateReportToolStripButton.Image")));
+      this.CreateReportToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+      this.CreateReportToolStripButton.Name = "CreateReportToolStripButton";
+      this.CreateReportToolStripButton.Size = new System.Drawing.Size(109, 24);
+      this.CreateReportToolStripButton.Text = "Создать отчет";
+      this.CreateReportToolStripButton.Click += new System.EventHandler(this.CreateReportToolStripButton_Click);
       // 
       // MainForm
       // 
@@ -259,6 +271,7 @@
     private System.Windows.Forms.ColumnHeader columnHeader4;
     private System.Windows.Forms.ColumnHeader columnHeader5;
     private System.Windows.Forms.ToolStripButton toolStripButton1;
+    private System.Windows.Forms.ToolStripButton CreateReportToolStripButton;
   }
 }
 
