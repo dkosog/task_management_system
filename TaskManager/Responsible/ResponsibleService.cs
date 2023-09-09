@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TaskManager.Responsible
 {
@@ -87,6 +88,16 @@ namespace TaskManager.Responsible
             responsibles.RemoveAt(index);
         }
 
+        /// <summary>
+        /// Удаление ответственного по индексу.
+        /// </summary>
+        /// <param name="id">Ид ответственного.</param>
+        public void RemoveResponsible(Guid id)
+        {
+            Responsible responsible = this.GetResponsible(id);
+            responsibles.Remove(responsible);
+        }
+
         #endregion
 
         #region UpdateResponsible
@@ -115,6 +126,19 @@ namespace TaskManager.Responsible
             responsibles[index].Email = email;
         }
 
+        /// <summary>
+        /// Обновить данные ответственного в коллекции по индексу.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="email"></param>
+        public void UpdateResponsible(Guid id, string name, string email)
+        {
+            Responsible responsible = this.GetResponsible(id);
+            responsible.Name = name;
+            responsible.Email = email;
+        }
+
         #endregion
 
         #region GetResponsible
@@ -128,6 +152,16 @@ namespace TaskManager.Responsible
         public Responsible GetResponsible(string name, string email)
         {
             return responsibles.Find(responsible => responsible.Name == name && responsible.Email == email);
+        }
+
+        /// <summary>
+        /// Поиск ответственного по ид.
+        /// </summary>
+        /// <param name="id">Уникальный ид пользователя.</param>
+        /// <returns>Данные ответственного.</returns>
+        public Responsible GetResponsible(Guid id)
+        {
+            return responsibles.Find(responsible => responsible.Id == id);
         }
 
         /// <summary>
