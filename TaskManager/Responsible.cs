@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskManager.Responsible
+namespace TaskManager
 {
     /// <summary>
     /// Класс ответственных.
