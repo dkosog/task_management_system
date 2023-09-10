@@ -15,16 +15,16 @@ namespace TaskManager
        
     {
         private List<Tasks> _list1;
-        //private List<Responsible> _list2;
+        private DataTable _dt1;
         public TasksForm1()
         {
             InitializeComponent();
             _list1 = new List<Tasks>();
-           // _list2 = new List<Responsible>();
+            _dt1 = new DataTable();
             bnSrc1.DataSource = _list1;
-            //bnSrc2.DataSource = _list2;
+            //bnSrc2.DataSource = _dt1;
             dataGridView1.AutoGenerateColumns = true;
-            //dataGridView2.AutoGenerateColumns = true;
+            dataGridView2.AutoGenerateColumns = true;
     }
 
         private void TasksForm1_Load(object sender, EventArgs e)
@@ -37,13 +37,11 @@ namespace TaskManager
                 bnSrc1.ResetBindings(false);
             }
 
-            //_list2.Clear();
-            //List<Responsible> list2 = DBHelper.GetResponsibles();
-            //if (list != null && list.Count > 0)
-            //{
-            //    _list2.AddRange(list2);
-            //    bnSrc2.ResetBindings(false);
-            //}
+            _dt1.Clear();
+            DataTable table1 = DBHelper.GetResponsibles();
+            dataGridView2.DataSource = table1;
+            //bnSrc2.ResetBindings(false);
+            
 
         }
     }
