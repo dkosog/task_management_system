@@ -61,8 +61,8 @@ namespace TaskManager
 
     private void createTaskToolStripButton_Click(object sender, EventArgs e)
     {
-            //var createTaskForm = new CreateTaskForm();
-            //createTaskForm.ShowDialog();
+            var createTaskForm = new CreateTaskForm();
+            createTaskForm.ShowDialog();
             
         }
 

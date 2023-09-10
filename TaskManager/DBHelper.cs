@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
@@ -121,43 +122,29 @@ namespace TaskManager
             return null;
         }
 
-        //internal static List<Responsible> GetResponsibles()
-        //{
-        //    //if (!File.Exists(pathDB)) 
-        //    //{
-        //    //CreateDB();
-        //    //}
-        //    try
-        //    {
-        //        using (SQLiteConnection con = new SQLiteConnection(string.Format($"Data source={pathDB};")))
-        //        {
-        //            con.Open();
-        //            using (SQLiteCommand cmd = new SQLiteCommand(@"SELECT * FROM tb_responsible;", con))
-        //            {
-        //                using (var rdr = cmd.ExecuteReader())
-        //                {
-        //                    List<Responsible> resp = new List<Responsible>();
-        //                    while (rdr.Read())
-        //                    {
-        //                        resp.Add(new Responsible
-        //                        {
-        //                            Id = rdr.GetInt32(0),
-        //                            Name = rdr.GetString(1),
-        //                            Mail = rdr.GetString(2)
-                                    
-        //                        });
+		internal static DataTable GetResponsibles()
+		{
+			//if (!File.Exists(pathDB)) 
+			//{
+			//CreateDB();
+			//}
+			try
+			{
+				using (SQLiteConnection con = new SQLiteConnection(string.Format($"Data source={pathDB};")))
+				{
+                    DataTable resp = new DataTable();
+                    con.Open();
+					using (SQLiteDataAdapter ada = new SQLiteDataAdapter(@"SELECT * FROM tb_responsible;", con))
+					{
+						ada.Fill(resp);
+					}return resp;
 
-        //                    }
-        //                    return resp;
-        //                }
-        //            }
-
-        //        }
+				}
 
 
-        //    }
-        //    catch (Exception ex) { MessageBox.Show(ex.Message); }
-        //    return null;
-        //}
-    }
+			}
+			catch (Exception ex) { MessageBox.Show(ex.Message); }
+			return null;
+		}
+	}
 }
