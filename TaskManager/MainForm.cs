@@ -61,11 +61,12 @@ namespace TaskManager
 
     private void createTaskToolStripButton_Click(object sender, EventArgs e)
     {
-      var createTaskForm = new CreateTaskForm();
-      createTaskForm.ShowDialog();
-    }
+            //var createTaskForm = new CreateTaskForm();
+            //createTaskForm.ShowDialog();
+            
+        }
 
-    private void upStatusToolStripButton_Click(object sender, EventArgs e)
+        private void upStatusToolStripButton_Click(object sender, EventArgs e)
     {
       foreach (ListViewItem item in tasksListView.SelectedItems)
       {
@@ -96,6 +97,7 @@ namespace TaskManager
         MessageBoxIcon.Warning
         );
     }
+
 
     /// <summary>
     /// Конструктор.
@@ -200,5 +202,11 @@ namespace TaskManager
       Reports reports = new Reports(tasksListView);
       reports.ReportCreate();
     }
-  }
+
+        private void TasksFormToolStripButton_Click(object sender, EventArgs e)
+        {
+            var createTaskForm = new TasksForm1();
+            createTaskForm.ShowDialog();
+        }
+    }
 }
