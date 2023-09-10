@@ -1,4 +1,6 @@
-﻿namespace TaskManager.Responsibles
+﻿using System;
+
+namespace TaskManager.Responsible
 {
     /// <summary>
     /// Класс ответственных.
@@ -6,6 +8,11 @@
     public class Responsible
     {
         #region Поля и свойства
+
+        /// <summary>
+        /// Ид ответственного.
+        /// </summary>
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Имя ответственного.
@@ -27,38 +34,27 @@
         /// <param name="name">Имя ответственного.</param>
         /// <param name="email">Почта ответственного.</param>
         public Responsible(string name, string email)
+            : this(Guid.NewGuid(), name, email)
         {
+        }
+
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
+        /// <param name="name">Имя ответственного.</param>
+        /// <param name="email">Почта ответственного.</param>
+        public Responsible(Guid id, string name, string email)
+        {
+            Id = id;
             Name = name;
             Email = email;
         }
 
         #endregion
 
-        #region Методы
-
         public override string ToString()
         {
             return $"{Name} - {Email}";
         }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-                return false;
-
-            Responsible responsible = obj as Responsible;
-
-            if (responsible == null)
-                return false;
-
-            return Name == responsible.Name && Email == responsible.Email;
-        }
-
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode() ^ Email.GetHashCode();
-        }
-
-        #endregion
     }
 }
