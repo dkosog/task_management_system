@@ -1,5 +1,4 @@
 ﻿using System;
-using TaskManager.Responsibles;
 
 namespace TaskManager
 {
@@ -57,6 +56,7 @@ namespace TaskManager
     /// <param name="name">Название</param>
     /// <param name="disciption">Описание задачи</param>
     /// <param name="status">Cтатус задачи</param>
+    /// <param name="deadline">Количество дней на выполнение задачи</param>
     /// <param name="priority">Приоритет</param>
     /// <param name="responsible">Ответсвенный</param>
     /// <param name="comments">Комментарий</param>

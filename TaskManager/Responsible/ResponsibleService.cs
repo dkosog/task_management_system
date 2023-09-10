@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TaskManager.Responsibles
+namespace TaskManager.Responsible
 {
     /// <summary>
     /// Класс работы с ответственными.
