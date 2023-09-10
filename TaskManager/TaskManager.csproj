@@ -62,9 +62,11 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <Private>True</Private>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Office\Office16\DCF\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -95,6 +97,12 @@
     <Compile Include="CreateTaskForm.Designer.cs">
       <DependentUpon>CreateTaskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateTaskForm.Designer.cs">
+      <DependentUpon>CreateTaskForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -113,6 +121,10 @@
     <Compile Include="TaskForm.Designer.cs">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskItem.cs" />
+    <EmbeddedResource Include="CreateTaskForm.resx">
+      <DependentUpon>CreateTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Tasks.cs" />
     <Compile Include="TasksForm1.cs">
       <SubType>Form</SubType>
@@ -139,6 +151,13 @@
     <EmbeddedResource Include="TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TasksForm1.resx">
+      <DependentUpon>TasksForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="dbase.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
     <EmbeddedResource Include="TasksForm1.resx">
       <DependentUpon>TasksForm1.cs</DependentUpon>
     </EmbeddedResource>

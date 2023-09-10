@@ -58,7 +58,7 @@ namespace TaskManager
         deleteTaskToolStripButton.Enabled = false;
       }
     }
-
+    
     private void createTaskToolStripButton_Click(object sender, EventArgs e)
     {
             var createTaskForm = new CreateTaskForm();
