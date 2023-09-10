@@ -1,4 +1,5 @@
 ﻿using System;
+using TaskManager.Responsibles;
 
 namespace TaskManager
 {
@@ -7,6 +8,7 @@ namespace TaskManager
   /// </summary>
   internal class TaskItem
   {
+    #region Свойства
     /// <summary>
     /// Id задачи.
     /// </summary>
@@ -23,19 +25,9 @@ namespace TaskManager
     public Status Status { get; set; }
 
     /// <summary>
-    /// Дата создание задачи.
-    /// </summary>
-    public DateTime DateStart { get; set; }
-
-    /// <summary>
-    /// Дата завершение задачи.
-    /// </summary>
-    public DateTime DateEnd { get; set; }
-
-    /// <summary>
     /// Дней на исполнение.
     /// </summary>
-    public int Deadlines { get; set; }
+    public int Deadline { get; set; }
 
     /// <summary>
     /// Приоритет задачи.
@@ -56,33 +48,33 @@ namespace TaskManager
     /// Ответсвенные.
     /// </summary>
     public Responsible Responsible { get; set; }
+    #endregion
 
+    #region Конструкор
     /// <summary>
     /// Конструктор для создание задачи.
     /// </summary>
     /// <param name="name">Название</param>
     /// <param name="disciption">Описание задачи</param>
     /// <param name="status">Cтатус задачи</param>
-    /// <param name="dateStart">Дата старта задачи</param>
-    /// <param name="dateEnd">Дата окончания задачи</param>
     /// <param name="priority">Приоритет</param>
     /// <param name="responsible">Ответсвенный</param>
     /// <param name="comments">Комментарий</param>
-    public TaskItem(string name, string disciption, Status status, DateTime dateStart, DateTime dateEnd, Priority priority, Responsible responsible, string comments)
+    public TaskItem(string name, string disciption, Status status, int deadline, Priority priority, Responsible responsible, string comments)
     {
       ID = Guid.NewGuid();
       Name = name;
       Disciption = disciption;
       Status = status;
-      DateStart = dateStart;
-      DateEnd = dateEnd;
       Priority = priority;
       Responsible = responsible;
       Comments = comments;
-      Deadlines = (dateEnd - dateStart).Days;
+      Deadline = deadline;
     }
+    #endregion
   }
 
+  #region Перечисление
   /// <summary>
   /// Перечисление статусов: Не взята в работу, Взята в работу, На проверке, Завершена.
   /// </summary>
@@ -105,4 +97,5 @@ namespace TaskManager
     High,
     Urgent
   }
+  #endregion
 }

@@ -1,4 +1,4 @@
-﻿namespace TaskManager.Responsible
+﻿namespace TaskManager.Responsibles
 {
     /// <summary>
     /// Класс ответственных.
